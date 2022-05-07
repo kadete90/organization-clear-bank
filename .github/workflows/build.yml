@@ -22,5 +22,5 @@ jobs:
       - name: Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@master   
         with:
-          github-token: ${{ secrets.CODE_COVERAGE_TOKEN }} 
+          github-token: ${{ github.token }} 
           path-to-lcov: test/ClearBank.DeveloperTest.Tests/TestResults/coverage.info 
