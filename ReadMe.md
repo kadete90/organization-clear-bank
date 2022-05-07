@@ -1,6 +1,7 @@
 [![Build](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml)
 
 ![image](https://user-images.githubusercontent.com/8395639/167250478-61422c88-1ebb-402e-ac8f-3fb3c9015fc9.png)
+![image](https://user-images.githubusercontent.com/8395639/167251122-e5f6d009-c2c8-4619-9632-f7ac6b3deda2.png)
 
 ### Test Description
 In the 'PaymentService.cs' file you will find a method for making a payment. At a high level the steps for making a payment are:
