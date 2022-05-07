@@ -16,6 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearBank.DeveloperTest.Tests", "test\ClearBank.DeveloperTest.Tests\ClearBank.DeveloperTest.Tests.csproj", "{4963793E-6374-4399-A16D-A818A0A216B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7C06D53D-9CEC-450C-A791-DDD115EBAF5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{62A2E639-5EED-472E-95A8-2A59CD649240}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{721B9E87-CD67-4B45-907F-A59C2679B2EB} = {CA9F5EE1-CCF6-4CD1-A34D-628780E9ECDE}
 		{4963793E-6374-4399-A16D-A818A0A216B7} = {7A470E3B-50E5-4939-9F4B-659AD1DC3BE0}
+		{7C06D53D-9CEC-450C-A791-DDD115EBAF5A} = {90EA2CF5-BAA8-45C4-981C-6057ED5AE428}
+		{62A2E639-5EED-472E-95A8-2A59CD649240} = {7C06D53D-9CEC-450C-A791-DDD115EBAF5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCDD9DD6-D423-48D4-BF2E-67533CADECAD}
