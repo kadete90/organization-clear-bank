@@ -1,4 +1,4 @@
-[![Build](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml/badge.svg)](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml)
+[![Build](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml)
 
 ![image](https://user-images.githubusercontent.com/8395639/167250478-61422c88-1ebb-402e-ac8f-3fb3c9015fc9.png)
 
