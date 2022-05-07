@@ -2,7 +2,7 @@
 {
     public enum PaymentScheme
     {
-        FasterPayments,
+        FasterPayments = 1,
         Bacs,
         Chaps
     }

@@ -5,6 +5,7 @@ using ClearBank.DeveloperTest.Types;
 using FluentAssertions;
 using Moq;
 using Xunit;
+// ReSharper disable ExpressionIsAlwaysNull
 
 namespace ClearBank.DeveloperTest.Tests.Services
 {
@@ -36,6 +37,24 @@ namespace ClearBank.DeveloperTest.Tests.Services
         }
 
         [Theory, AutoData]
+        public void Given_null_account_When_MakePayment_Then_should_return_failure(
+            MakePaymentRequest request)
+        {
+            // Given
+            _dataStore.Setup(d => d.GetAccount(
+                    It.Is<string>(s => s == request.DebtorAccountNumber))
+                )
+                .Returns((Account)null);
+
+            // When
+            var result = _sut.MakePayment(request);
+
+            // Then
+            result.Should().NotBeNull();
+            result.Success.Should().BeFalse();
+        }
+
+        [Theory, AutoData]
         public void Given_valid_request_with_bacs_scheme_When_MakePayment_Then_should_return_success(
             MakePaymentRequest request, Account account)
         {
@@ -61,7 +80,10 @@ namespace ClearBank.DeveloperTest.Tests.Services
             MakePaymentRequest request, Account account)
         {
             // Given
+            account.Balance = 20;
             account.AllowedPaymentSchemes = AllowedPaymentSchemes.FasterPayments;
+
+            request.Amount = 10;
             request.PaymentScheme = PaymentScheme.FasterPayments;
 
             _dataStore.Setup(d => d.GetAccount(
@@ -134,6 +156,27 @@ namespace ClearBank.DeveloperTest.Tests.Services
             account.Status = accountStatus;
             account.AllowedPaymentSchemes = AllowedPaymentSchemes.Chaps;
             request.PaymentScheme = PaymentScheme.Chaps;
+
+            _dataStore.Setup(d => d.GetAccount(
+                    It.Is<string>(s => s == request.DebtorAccountNumber))
+                )
+                .Returns(account);
+
+            // When
+            var result = _sut.MakePayment(request);
+
+            // Then
+            result.Should().NotBeNull();
+            result.Success.Should().BeFalse();
+        }
+
+
+        [Theory, AutoData]
+        public void Given_invalid_PaymentScheme_When_MakePayment_Then_should_return_failure(
+            MakePaymentRequest request, Account account)
+        {
+            // Given
+            request.PaymentScheme = 0;
 
             _dataStore.Setup(d => d.GetAccount(
                     It.Is<string>(s => s == request.DebtorAccountNumber))

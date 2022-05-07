@@ -45,7 +45,7 @@ namespace ClearBank.DeveloperTest.Services
                     PaymentScheme.Bacs => AccountAllowsBacs(account),
                     PaymentScheme.FasterPayments => AllowsFasterPayments(account, request.Amount),
                     PaymentScheme.Chaps => AllowsChaps(account),
-                    _ => true // default assumption
+                    _ => false // default assumption
                 }
             };
 
