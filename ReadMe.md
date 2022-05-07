@@ -1,6 +1,8 @@
 [![Build](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/kadete90/organization-clear-bank/badge.svg?branch=main)](https://coveralls.io/github/kadete90/organization-clear-bank?branch=main)
 
+_Reduced % due to no Unit Tests for IDataStore dummy implementations_
+
 ![image](https://user-images.githubusercontent.com/8395639/167251148-f1148065-1cab-40bf-8a35-c7c7d779cb4d.png)
 ![image](https://user-images.githubusercontent.com/8395639/167251122-e5f6d009-c2c8-4619-9632-f7ac6b3deda2.png)
 
