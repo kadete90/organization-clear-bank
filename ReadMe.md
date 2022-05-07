@@ -1,6 +1,6 @@
 [![Build](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kadete90/organization-clear-bank/actions/workflows/build.yml)
 
-![image](https://user-images.githubusercontent.com/8395639/167250478-61422c88-1ebb-402e-ac8f-3fb3c9015fc9.png)
+![image](https://user-images.githubusercontent.com/8395639/167251148-f1148065-1cab-40bf-8a35-c7c7d779cb4d.png)
 ![image](https://user-images.githubusercontent.com/8395639/167251122-e5f6d009-c2c8-4619-9632-f7ac6b3deda2.png)
 
 ### Test Description
