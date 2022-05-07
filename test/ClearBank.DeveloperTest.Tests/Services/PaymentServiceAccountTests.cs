@@ -41,10 +41,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             MakePaymentRequest request)
         {
             // Given
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns((Account)null);
+            SetupDataStore(request, null);
 
             // When
             var result = _sut.MakePayment(request);
@@ -52,6 +49,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeFalse();
+
+            VerifyMocks();
         }
 
         [Theory, AutoData]
@@ -62,10 +61,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             account.AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs;
             request.PaymentScheme = PaymentScheme.Bacs;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -73,6 +69,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
+
+            VerifyMocks();
         }
 
         [Theory, AutoData]
@@ -86,10 +84,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             request.Amount = 10;
             request.PaymentScheme = PaymentScheme.FasterPayments;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -97,6 +92,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
+
+            VerifyMocks();
         }
 
         [Theory, AutoData]
@@ -108,10 +105,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             account.AllowedPaymentSchemes = AllowedPaymentSchemes.Chaps;
             request.PaymentScheme = PaymentScheme.Chaps;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -119,6 +113,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
+
+            VerifyMocks();
         }
 
         [Theory, AutoData]
@@ -132,10 +128,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             account.Balance = 10;
             request.Amount = 20;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -143,6 +136,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeFalse();
+
+            VerifyMocks();
         }
 
         [Theory]
@@ -157,10 +152,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             account.AllowedPaymentSchemes = AllowedPaymentSchemes.Chaps;
             request.PaymentScheme = PaymentScheme.Chaps;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -168,6 +160,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeFalse();
+
+            VerifyMocks();
         }
 
 
@@ -178,10 +172,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Given
             request.PaymentScheme = 0;
 
-            _dataStore.Setup(d => d.GetAccount(
-                    It.Is<string>(s => s == request.DebtorAccountNumber))
-                )
-                .Returns(account);
+            SetupDataStore(request, account);
 
             // When
             var result = _sut.MakePayment(request);
@@ -189,6 +180,8 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeFalse();
+
+            VerifyMocks();
         }
 
         [Theory]
@@ -217,6 +210,27 @@ namespace ClearBank.DeveloperTest.Tests.Services
             // Then
             result.Should().NotBeNull();
             result.Success.Should().BeFalse();
+
+            VerifyMocks();
+        }
+
+        private void SetupDataStore(MakePaymentRequest request, Account account)
+        {
+            _dataStore.Setup(d => d.GetAccount(
+                    It.Is<string>(s => s == request.DebtorAccountNumber))
+                )
+                .Returns(account);
+
+            if (account != null)
+            {
+                _dataStore.Setup(d => d.UpdateAccount(It.Is<Account>(r => r.AccountNumber == account.AccountNumber)))
+                    .Verifiable();
+            }
+        }
+
+        private void VerifyMocks()
+        {
+            _dataStore.VerifyAll();
         }
     }
 }
