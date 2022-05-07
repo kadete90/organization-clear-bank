@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <IsPackable>false</IsPackable>
+	  <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <!--Auto-generate test request-->
+	  <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
+	  <!--dotnet code analytics, e.g. consumed by SonarQube -->
+	  <PackageReference Include="coverlet.collector" Version="3.1.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <!--Test Assertions -->
+	  <PackageReference Include="FluentAssertions" Version="6.6.0" />
+	  <!--To run Unit Tests -->
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+	  <!--Mock dependencies -->
+	  <PackageReference Include="Moq" Version="4.17.2" />
+	  <!--To run Unit Tests -->
+	  <PackageReference Include="xunit" Version="2.4.1" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ClearBank.DeveloperTest\ClearBank.DeveloperTest.csproj" />
+  </ItemGroup>
+
+</Project>

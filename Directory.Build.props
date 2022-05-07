@@ -1,0 +1,6 @@
+<Project>
+    <PropertyGroup>
+        <GenerateFullPaths>true</GenerateFullPaths>
+        <LangVersion>10.0</LangVersion>
+    </PropertyGroup>
+</Project>
